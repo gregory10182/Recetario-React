@@ -59,6 +59,8 @@ const CrearReceta = () => {
             </h1>
           )}
 
+          {img && <Preview Type="img" Datos={img} />}
+
           {ingredientes.length > 0 && (
             <Preview
               Datos={ingredientes}
@@ -79,7 +81,7 @@ const CrearReceta = () => {
             />
           )}
 
-          {img && <Preview Type="img" Datos={img} />}
+          
         </div>
 
         <NavButtons active="crear">
@@ -90,7 +92,7 @@ const CrearReceta = () => {
                 AgregarReceta();
               }}
             >
-              Agregar Receta
+              <img src="https://cdn-icons-png.flaticon.com/512/4743/4743125.png" alt="" />
             </button>
           )}
         </NavButtons>

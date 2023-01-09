@@ -37,11 +37,14 @@ const Inputs = ({ Type, setDato, setDato1, setDato2 }) => {
       <div className="Input">
         <input
           type="file"
+          id="file"
           className="file"
+          accept="image/*"
           onChange={(e) => {
             setDato(e.target.files[0]);
           }}
         />
+        <label for="file">Subir Imagen</label>
       </div>
     );
   }

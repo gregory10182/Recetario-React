@@ -8,14 +8,14 @@ export default function NavButtons ({ children, active }) {
         <div className="ButtonContainer">
           <Link to="/ver">
             <button
-              className={(active === "ver" && "Button active") || "Button"}
-            >Ver Recetas</button>
+              className="Button"
+            ><img src="https://cdn-icons-png.flaticon.com/512/1086/1086933.png" alt="" /></button>
           </Link>
 
           <Link to="/">
             <button
-              className={(active === "crear" && "Button active") || "Button"}  
-            >Crear Receta</button>
+              className="Button"
+            ><img src="https://cdn-icons-png.flaticon.com/512/1237/1237946.png" alt="" /></button>
           </Link>
 
           {children}
