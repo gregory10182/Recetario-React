@@ -60,7 +60,7 @@ const DetalleReceta = () => {
             <h2>Pasos</h2>
             {pasos &&
               pasos.map((paso, i) => (
-                <p key={i}>{i + 1 + " " + paso}</p>
+                <p key={i}>{i + 1 + ". " + paso}</p>
               ))}
           </div>
         </div>

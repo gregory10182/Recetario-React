@@ -1,4 +1,4 @@
-html{
+html {
   height: 100%;
   width: 100%;
 }
@@ -46,7 +46,7 @@ h1 {
 .Card {
   display: flex;
   justify-content: center;
-  background-color: rgba( 255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(1px);
   border: 1.5px solid rgba(209, 213, 219, 0.3);
   flex-wrap: wrap;
@@ -235,23 +235,23 @@ h1 {
 /* recetas */
 
 
-.receta{
+.receta {
   display: flex;
   justify-content: center;
-  background-color: rgba( 255, 255, 255, 0.3);
-  backdrop-filter: blur(1px);
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(3px);
   border: 1.5px solid rgba(209, 213, 219, 0.3);
   flex-wrap: wrap;
   border-radius: 5px;
-  padding: 10px;
-  height: 250px;
-  width: 30%;
+  padding: 0px 20px;
+  height: 200px;
+  width: 90%;
   text-decoration: none;
 }
 
-.receta img{
-  width: 90%;
-  height: 80%;
+.receta img {
+  width: 100%;
+  height: 70%;
   object-fit: contain;
 }
 
@@ -262,81 +262,71 @@ h1 {
   color: white;
   margin-bottom: 5px;
   text-align: center;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 
 /* detalleReceta */
 
 
-.datos{
+.datos {
   display: flex;
-  gap: 20px;
+  gap: 10px;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
   width: 100%;
-  height: 45%;
+  height: 100%;
 }
 
-.ingredientes{
+.datos h2 {
+  width: 100%;
+  color: white;
+  text-align: center;
+  font-size: 18px;
+}
+
+.datos p {
+  width: 100%;
+  font-size: 13px;
+  color: white;
+  text-align: left;
+}
+
+.ingredientes {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  width: 20%;
-  min-height: 300px;
+  width: 100%;
   word-wrap: break-word;
-  padding: 20px 30px;
-  border-radius: 20px;
-  background-color: rgba( 255, 255, 255, 0.3);
+  padding: 10px 20px;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(3px);
+  border: 1.5px solid rgba(209, 213, 219, 0.3);
+}
+
+
+.pasos {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  word-wrap: break-word;
+  border-radius: 15px;
+  padding: 10px 20px;
+  background-color: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(5px);
   border: 1.5px solid rgba(209, 213, 219, 0.3);
 }
 
-.ingredientes h2{
-  width: 100%;
-  color: white;
-  text-align: center;
-}
 
-.ingredientes p{
-  width: 100%;
-  font-size: 20px;
-  color: white;
-  text-align: left ;
-}
-
-.pasos{
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  width: 60%;
-  min-height: 300px;
-  word-wrap: break-word;
-  border-radius: 20px;
-  padding: 23px 30px;
-  background-color: rgba( 255, 255, 255, 0.3);
-  backdrop-filter: blur(5px);
-  border: 1.5px solid rgba(209, 213, 219, 0.3);
-}
-
-.pasos h2{
-  width: 100%;
-  color: white;
-  text-align: center;
-}
-
-.pasos p{
-  width: 100%;
-  font-size: 20px;
-  color: white;
-  text-align: left ;
-}
 
 
 
 /* Escalar Receta */
 
-.CantidadTotal{
+.CantidadTotal {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -345,33 +335,36 @@ h1 {
   position: fixed;
   padding-bottom: 10px;
   bottom: 20px;
-  width: 15%;
-  height: 10%;
-  border-radius: 20px;
-  background-color: rgba( 255, 255, 255, 0.3);
+  width: 50%;
+  height: 12%;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(5px);
   border: 1.5px solid rgba(209, 213, 219, 0.3);
 }
 
-.CantidadTotal p{
+.CantidadTotal p {
   width: 100%;
-  margin-bottom: 0px;
+  margin: 5px 0px;
+  font-size: 13px;
   color: white;
   text-align: center;
 }
 
-.CantidadTotal input{
+.CantidadTotal input {
   width: 40%;
   height: 40%;
   border-radius: 5px;
+  font-size: 10px;
   border: none;
   outline: none;
   text-align: center;
 }
 
-.CantidadTotal button{
-  width: 30%;
+.CantidadTotal button {
+  width: 32%;
   height: 40%;
+  font-size: 11px;
   border-radius: 5px;
   border: none;
   outline: none;
@@ -380,17 +373,17 @@ h1 {
 
 /* Navbutton */
 
-.ButtonContainer{
+.ButtonContainer {
   position: fixed;
   bottom: 20px;
   right: 10px;
 }
 
-.ButtonContainer a{
+.ButtonContainer a {
   text-decoration: none;
 }
 
-.Button{
+.Button {
   display: block;
   font-size: 8px;
   width: 40px;
@@ -398,22 +391,22 @@ h1 {
   border-radius: 50%;
   margin-bottom: 10px;
   border: none;
-  box-shadow: 0px 3px 10px rgba( 255, 255, 255, 0.3);
+  box-shadow: 0px 3px 10px rgba(255, 255, 255, 0.3);
   transition: all 0.5s ease;
 }
 
-.Button img{
+.Button img {
   height: 10px;
 }
 
-.Button:hover{
+.Button:hover {
   width: 50px;
   height: 50px;
   background-color: #000;
   color: white;
 }
 
-.Button:hover img{
+.Button:hover img {
   filter: invert(1);
 }
 
@@ -430,7 +423,7 @@ h1 {
     font-size: 14px;
   }
 
-  .Card span{
+  .Card span {
     margin: 0px 10px;
     font-size: 22px;
   }
@@ -455,14 +448,105 @@ h1 {
 
 
   /* navbuttons */
-  .Button{
+  .Button {
     display: block;
     width: 50px;
     height: 50px;
   }
-  
-  .Button img{
+
+  .Button img {
     height: 14px;
+  }
+
+  /* recetas */
+
+  .receta {
+    padding: 5px 5px;
+    height: 250px;
+    width: 80%;
+  }
+
+  .receta img {
+    width: 80%;
+    height: 80%;
+  }
+
+  .receta p {
+    width: 100%;
+    font-weight: 600;
+    margin-top: 5px;
+    color: white;
+    margin-bottom: 5px;
+    text-align: center;
+    font-size: 18px;
+  }
+
+  /* detalle receta */
+
+  .datos {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 15px;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+  }
+
+  .datos h2 {
+    font-size: 16px;
+    width: 100%;
+    color: white;
+    text-align: center;
+  }
+
+  .datos p {
+    width: 100%;
+    font-size: 15px;
+    color: white;
+    text-align: left;
+  }
+
+  .ingredientes {
+    width: 35%;
+    padding: 10px 15px;
+    border-radius: 20px;
+  }
+
+  .pasos {
+    width: 60%;
+    border-radius: 20px;
+    padding: 10px 15px;
+  }
+
+  /* Escalar Receta */
+
+  .CantidadTotal {
+    width: 30%;
+  }
+
+  .CantidadTotal p {
+    width: 100%;
+    margin-bottom: 0px;
+    color: white;
+    text-align: center;
+  }
+
+  .CantidadTotal input {
+    width: 40%;
+    height: 40%;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    text-align: center;
+  }
+
+  .CantidadTotal button {
+    width: 30%;
+    height: 40%;
+    border-radius: 5px;
+    border: none;
+    outline: none;
   }
 
 }
@@ -470,15 +554,16 @@ h1 {
 
 @media screen and (min-width: 1024px) {
 
+
   /* crear Receta */
 
-  .Card{
-    width: 45%;
+  .Card {
+    width: 42%;
     height: 250px;
     padding: 5px 20px;
   }
 
-  .Card p{
+  .Card p {
     font-size: 18px;
   }
 
@@ -487,21 +572,22 @@ h1 {
     font-size: 16px;
   }
 
-  .Card span{
+  .Card span {
     margin: -2px 10px;
     font-size: 24px;
   }
 
-  .Card textarea{
+  .Card textarea {
     height: 100px;
   }
 
 
   /* Display */
-  
-  .display{
+
+  .display {
     width: 32%;
   }
+
   .display .image {
     width: 60%;
     object-fit: cover;
@@ -510,14 +596,83 @@ h1 {
 
   /* navbuttons */
 
-  .Button{
+  .Button {
     display: block;
     width: 50px;
     height: 50px;
   }
-  
-  .Button img{
+
+  .Button img {
     height: 14px;
+  }
+
+
+  /* recetas */
+
+  .receta {
+    padding: 5px 10px;
+    height: 40vh;
+    width: 29%;
+    text-decoration: none;
+  }
+
+  .receta img {
+    width: 90%;
+    height: 80%;
+    object-fit: contain;
+  }
+
+  /* detalle receta */
+
+  .datos {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+  }
+
+  .datos h2 {
+    font-size: 20px;
+  }
+
+  .datos p {
+    font-size: 17px;
+  }
+
+  .ingredientes {
+    width: 35%;
+    padding: 15px 20px;
+    border-radius: 20px;
+  }
+
+  .pasos {
+    width: 60%;
+    border-radius: 20px;
+    padding: 15px 20px;
+  }
+
+  /* Escalar Receta */
+
+  .CantidadTotal {
+    width: 300px;
+  }
+
+  .CantidadTotal p {
+    font-size: 15px;
+  }
+
+  .CantidadTotal input {
+    width: 35%;
+    font-size: 12px;
+  }
+
+  .CantidadTotal button {
+    width: 20%;
+    height: 29px;
+    font-size: 12px;
   }
 
 }
