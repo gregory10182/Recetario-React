@@ -27,7 +27,6 @@ const CrearReceta = () => {
   };
 
   return (
-    <center>
       <div className="Container">
         <h1>Recetario de la Viejita</h1>
         <FormDatosReceta
@@ -101,7 +100,6 @@ const CrearReceta = () => {
         
 
       </div>
-    </center>
   );
 };
 

@@ -14,7 +14,6 @@ const Recetas = () => {
   }, []);
 
   return (
-    <center>
       <div className="Container">
         <h1>Recetas</h1>
 
@@ -25,10 +24,11 @@ const Recetas = () => {
                 <img src={receta.img.secure_url} alt={receta.Nombre_receta} />
             </Link>
           ))) || <p>No hay recetas</p>}
+
+        <NavButtons active="ver" /> 
       </div>
 
-      <NavButtons active="ver" />
-    </center>
+      
   );
 };
 

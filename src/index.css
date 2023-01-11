@@ -32,14 +32,19 @@ h1 {
   font-size: 20px;
 }
 
+.App{
+  display: flex;
+  justify-content: center;
+}
+
 .Container {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 20px;
   flex-wrap: wrap;
-  padding-top: 10px;
-  width: 65%;
+  padding: 0px 15%;
+  width: 100%;
 }
 
 
@@ -271,7 +276,6 @@ h1 {
 
 .datos {
   display: flex;
-  gap: 10px;
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
@@ -336,7 +340,7 @@ h1 {
   padding-bottom: 10px;
   bottom: 20px;
   width: 50%;
-  height: 12%;
+  height: 7%;
   border-radius: 15px;
   background-color: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(5px);
@@ -383,6 +387,15 @@ h1 {
   text-decoration: none;
 }
 
+.ButtonContainer #CT {
+  display: none;
+}
+
+#CT:checked~ .Button, #CT:checked .CantidadTotal{
+  visibility: visible;
+  background-color: blue;
+}
+
 .Button {
   display: block;
   font-size: 8px;
@@ -397,6 +410,10 @@ h1 {
 
 .Button img {
   height: 10px;
+}
+
+.Balanza img{
+  height: 14px;
 }
 
 .Button:hover {
@@ -414,6 +431,10 @@ h1 {
 
 
 @media screen and (min-width: 768px) {
+
+  .Container{
+    padding: 0px 20%;
+  }
 
   /* crear Receta */
 
@@ -554,6 +575,10 @@ h1 {
 
 @media screen and (min-width: 1024px) {
 
+  .Container{
+    padding: 0px 10%;
+  }
+
 
   /* crear Receta */
 
@@ -612,7 +637,8 @@ h1 {
   .receta {
     padding: 5px 10px;
     height: 40vh;
-    width: 29%;
+    width: 29vw;
+    height: 230px;
     text-decoration: none;
   }
 
@@ -676,3 +702,112 @@ h1 {
   }
 
 }
+
+@media screen and (min-width: 1440px) {
+
+  .Container{
+    padding: 0px 15%;
+  }
+
+  /* recetas */
+
+  .receta {
+    height: 30vh;
+    width: 18vw;
+  }
+  
+}
+
+
+@media screen and (min-width: 2460px) {
+
+  .Container{
+    padding: 0px 20%;
+  }
+
+  /* recetas */
+
+  .receta {
+    height: 32vh;
+    width: 18vw;
+  }
+
+  .receta p{
+    font-size: 24px;
+  }
+
+  /* crear Receta */
+
+  .Card {
+    width: 25vw;
+    height: 30vh;
+    padding: 5px 20px;
+  }
+
+  .Card p {
+    font-size: 24px;
+  }
+
+  .Card input{
+    height: 30%;
+  }
+
+  .Card .Cantidad {
+    width: 38%;
+    font-size: 20px;
+    height: 30%;
+  }
+
+  .Card span {
+    margin: -18px 10px;
+    font-size: 50px;
+  }
+
+  .Card textarea {
+    height: 80%;
+  }
+
+  .Card .Agregar {
+    width: 25%;
+    height: 15%;
+  }
+
+  /* detalle receta */
+
+  .datos h2 {
+    font-size: 30px;
+  }
+
+  .datos p {
+    font-size: 25px;
+  }
+
+  .ingredientes {
+    width: 30%;
+  }
+
+  /* Escalar Receta */
+
+  .CantidadTotal {
+    width: 350px;
+    height: 100px;
+  }
+
+  .CantidadTotal p {
+    font-size: 22px;
+  }
+
+  .CantidadTotal input {
+    width: 40%;
+    font-size: 15px;
+  }
+
+  .CantidadTotal button {
+    width: 25%;
+    height: 40px;
+    font-size: 15px;
+  }
+
+  
+}
+
