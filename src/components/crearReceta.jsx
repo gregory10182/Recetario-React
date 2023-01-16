@@ -28,7 +28,7 @@ const CrearReceta = () => {
 
   return (
       <div className="Container">
-        <h1>Recetario de la Viejita</h1>
+        
         <FormDatosReceta
           Agregar={(datos) => {
             setDatosReceta(datos);

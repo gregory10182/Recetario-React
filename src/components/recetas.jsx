@@ -15,7 +15,6 @@ const Recetas = () => {
 
   return (
       <div className="Container">
-        <h1>Recetas</h1>
 
         {(recetas &&
           recetas.map((receta, i) => (

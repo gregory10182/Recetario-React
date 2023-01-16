@@ -43,6 +43,7 @@ const DetalleReceta = () => {
 
   return (
     <div className="Container">
+      <br />
       <h1>{Nombre}</h1>
 
       <div className="datos">
