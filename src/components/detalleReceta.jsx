@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import apiGetReceta from "./api/apiGetReceta";
+import apiReceta from "./api/apiRecetas";
 import NavButtons from "./navButtons";
 
 const DetalleReceta = () => {
@@ -15,7 +15,8 @@ const DetalleReceta = () => {
   const [check, setCkeck] = useState(false);
 
   useEffect(() => {
-    apiGetReceta(id).then((res) => {
+    apiReceta.getRecipeDetails(id).then((res) => {
+      console.log(res);
       setNombre(res.Nombre_receta);
       setCantidadTotal(res.CantidadTotal);
       setingredientes(res.ingredientes);
@@ -43,7 +44,6 @@ const DetalleReceta = () => {
 
   return (
     <div className="Container">
-      <br />
       <h1>{Nombre}</h1>
 
       <div className="datos">

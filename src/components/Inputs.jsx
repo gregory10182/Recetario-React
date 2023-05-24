@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Inputs = ({ Type, setDato, setDato1, setDato2 }) => {
+
+  const [fileName, setFile] = useState()
+
+
   if (Type === "Doble") {
     return (
       <div className="Input">
@@ -42,9 +46,16 @@ const Inputs = ({ Type, setDato, setDato1, setDato2 }) => {
           accept="image/*"
           onChange={(e) => {
             setDato(e.target.files[0]);
+            setFile(e.target.files[0]?.name)
           }}
         />
-        <label for="file">Subir Imagen</label>
+        <label htmlFor="file">Subir Imagen</label>
+        {fileName ? (
+          <p className="fileName">Imagen: {fileName}</p>
+        ) : 
+        (
+          <p className="fileName">No hay imagen</p>
+        )}
       </div>
     );
   }
@@ -52,7 +63,7 @@ const Inputs = ({ Type, setDato, setDato1, setDato2 }) => {
   return (
     <div className="Input">
       <input onChange={(e) => setDato(e.target.value)} type="text" />
-    </div> //Fin de Ingredientes
+    </div>
   );
 };
 

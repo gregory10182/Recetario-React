@@ -1,12 +1,11 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import NavButtons from "./navButtons";
-import FormDatosReceta from "./formDatosReceta";
+import FormGReceta from "./formGReceta";
 import FormImg from "./formImg";
-import FormIngredientes from "./formIngredientes";
 import FormPasos from "./formPasos";
 import Preview from "./preview";
-import apiPost from "./api/apiPost";
+// import apiPost from "./api/apiPost";
+import apiReceta from "./api/apiRecetas";
 
 
 const CrearReceta = () => {
@@ -23,16 +22,27 @@ const CrearReceta = () => {
     Receta.append("pasos", JSON.stringify(pasos));
     Receta.append("img", img);
 
-    apiPost(Receta);
+    apiReceta.createRecipe(Receta)
+    .then((Response) => {
+      if(Response.status === 201){
+        alert("Receta Creada Exitosamente")
+        setDatosReceta([])
+        setingredientes([])
+        setpasos([])
+        setimg("")
+      }
+    })
   };
 
   return (
       <div className="Container">
         
-        <FormDatosReceta
+        <FormGReceta
           Agregar={(datos) => {
             setDatosReceta(datos);
           }}
+          fIR="Nombre de Receta"
+          sIR="Cantidad Total"
         />
         <FormImg
           Agregar={(imagen) => {
@@ -40,10 +50,13 @@ const CrearReceta = () => {
             setimg(imagen);
           }}
         />
-        <FormIngredientes
+        <FormGReceta
           Agregar={(ingrediente) => {
             setingredientes([...ingredientes, ingrediente]);
           }}
+          fIR="Nombre de Ingrediente"
+          sIR="Cantidad"
+          type="ing"
         />
         <FormPasos
           Agregar={(paso) => {

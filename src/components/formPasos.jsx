@@ -1,23 +1,33 @@
 import React from "react";
 import { useState } from "react";
-import Inputs from "./Inputs";
 
 const FormPasos = ({ Agregar }) => {
   const [paso, setPaso] = useState("");
 
-  const AgregarPaso = () => {
-    Agregar(paso);
-  };
+
 
   return (
     <div className="Card">
       <p>Paso:</p>
-      <Inputs Type="TextArea" setDato={setPaso} />
+      <div className="Input">
+        <textarea
+          onChange={(e) => {
+            setPaso(e.target.value);
+          }}
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+          value={paso}
+        ></textarea>
+      </div>
 
       <button
         className="Agregar"
         onClick={() => {
-          AgregarPaso();
+          Agregar(paso);
+
+          setPaso("")
         }}
       >
         Agregar

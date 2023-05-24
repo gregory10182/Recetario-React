@@ -22,7 +22,7 @@ const Preview = ({ Type, Datos, Borrar, lista }) => {
       <hr />
       {Datos.map((Dato, index) => {
         return (
-          <div className="Ingrediente" key={index}>
+          <div className="Informacion" key={index}>
             <p className="indice">{index + 1}</p>
             <p>{Dato.Texto || Dato}</p>
             <button
