@@ -1,5 +1,5 @@
 import axios from "axios";
-const baseUrl = "https://18.224.25.38/receta/";
+const baseUrl = "https://gregorypf.site/receta/";
 
 const getAll = () => {
   const request = axios.get(baseUrl);
