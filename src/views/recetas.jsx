@@ -1,15 +1,14 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import apiReceta from "./api/apiRecetas";
-import NavButtons from "./navButtons";
+import apiReceta from "../components/api/apiRecetas";
+import NavButtons from "../components/navButtons";
 
 const Recetas = () => {
   const [recetas, setrecetas] = useState([]);
 
   useEffect(() => {
     apiReceta.getAll().then((res) => {
-      console.log(res)
       setrecetas(res);
     });
   }, []);
