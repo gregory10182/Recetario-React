@@ -357,66 +357,75 @@ code {
 
 .CantidadTotal {
   display: flex;
+  box-sizing: border-box;
   justify-content: space-evenly;
   flex-wrap: wrap;
   align-items: center;
-  row-gap: 0.5rem;
+  row-gap: 1rem;
   position: fixed;
-  padding: 0.6rem;
-  bottom: 20px;
-  width: 50%;
-  height: 7%;
+  padding: 1rem 0.5rem;
+  bottom: 2rem;
+  width: 65%;
+  height: max-content;
   border-radius: 1rem;
+  backdrop-filter: blur(20px);
   background-color: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(5px);
   border: 1.5px solid rgba(209, 213, 219, 0.3);
+  transition: all 1s;
+}
+
+.CantidadTotal .TituloModal {
+  font-size: 1rem;
+  color: #ffef0a;
+  margin: 0;
 }
 
 .CantidadTotal .ContainerOpciones {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: nowrap;
+  height: 2rem;
   width: 100%;
 }
 
 .CantidadTotal .OpcionesAjuste {
   background-color: transparent;
   border-radius: 0;
-  width: 50%;
+  font-size: 0.8rem;
+  font-weight: 600;
+  width: 45%;
+  height: 100%;
+  color: #ffef0a;
+  border-bottom: 0.1rem solid #ffef0a;
+  transition: all 200ms;
+}
+
+.CantidadTotal .Seleccionada {
+  color: #9f3e2d;
+  border-bottom: 0.3rem solid #9f3e2d;
+}
+
+.CantidadTotal .LabelMod {
+  text-align: left;
+  width: 40%;
+  font-size: 0.8rem;
   color: white;
-}
-
-.CantidadTotal .OpcionesAjuste:nth-child(1) {
-  border-right: 0.1rem solid white;
-}
-
-.CantidadTotal .InputModificarUnidades {
-  width: 3rem;
-  font-size: 0.6rem;
-}
-
-.CantidadTotal p {
-  width: 100%;
-  margin: 5px 0px;
-  font-size: 13px;
-  color: white;
-  text-align: center;
 }
 
 .CantidadTotal input {
-  width: 40%;
-  height: 40%;
+  width: 50%;
+  height: 1rem;
+  padding: 0.3rem 0.1rem;
   border-radius: 5px;
-  font-size: 10px;
+  font-size: 0.8rem;
   border: none;
   outline: none;
-  text-align: center;
 }
 
 .CantidadTotal button {
-  width: 32%;
-  height: 40%;
-  font-size: 11px;
+  width: 60%;
+  height: 1.7rem;
+  font-size: 1rem;
   border-radius: 5px;
   border: none;
   outline: none;
@@ -596,31 +605,8 @@ code {
   /* Escalar Receta */
 
   .CantidadTotal {
-    width: 30%;
-  }
-
-  .CantidadTotal p {
-    width: 100%;
-    margin-bottom: 0px;
-    color: white;
-    text-align: center;
-  }
-
-  .CantidadTotal input {
-    width: 40%;
-    height: 40%;
-    border-radius: 5px;
-    border: none;
-    outline: none;
-    text-align: center;
-  }
-
-  .CantidadTotal button {
-    width: 30%;
-    height: 40%;
-    border-radius: 5px;
-    border: none;
-    outline: none;
+    width: 45%;
+    padding: 1rem;
   }
 }
 
@@ -733,23 +719,7 @@ code {
   /* Escalar Receta */
 
   .CantidadTotal {
-    width: 18rem;
-    height: 4rem;
-  }
-
-  .CantidadTotal p {
-    font-size: 15px;
-  }
-
-  .CantidadTotal input {
-    width: 35%;
-    font-size: 12px;
-  }
-
-  .CantidadTotal button {
-    width: 20%;
-    height: 29px;
-    font-size: 12px;
+    width: 25rem;
   }
 }
 

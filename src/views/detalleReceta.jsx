@@ -30,22 +30,27 @@ const DetalleReceta = () => {
     if (cantidadU !== 0) {
       setcantidadMod((unidades * cantidadU).toFixed());
     }
+    console.log(unidades, cantidadU);
   }, [unidades, cantidadU]);
 
   const ModificarTotal = () => {
-    let escala = cantidadMod / CantidadTotal[0];
-    let ingredientesMod = ingredientes.map((ingrediente) => {
-      ingrediente.Cantidad[0] = parseFloat(ingrediente.Cantidad[0]) * escala;
-      ingrediente.Texto =
-        parseFloat(ingrediente.Cantidad[0]).toFixed() +
-        " " +
-        ingrediente.Cantidad[1] +
-        " de " +
-        ingrediente.Nombre;
-      return ingrediente;
-    });
-    setingredientes(ingredientesMod);
-    setCantidadTotal([cantidadMod]);
+    if (cantidadMod > 0) {
+      let escala = cantidadMod / CantidadTotal[0];
+      let ingredientesMod = ingredientes.map((ingrediente) => {
+        ingrediente.Cantidad[0] = parseFloat(ingrediente.Cantidad[0]) * escala;
+        ingrediente.Texto =
+          parseFloat(ingrediente.Cantidad[0]).toFixed() +
+          " " +
+          ingrediente.Cantidad[1] +
+          " de " +
+          ingrediente.Nombre;
+        return ingrediente;
+      });
+      setingredientes(ingredientesMod);
+      setCantidadTotal([cantidadMod]);
+    } else {
+      alert("Hay algun Campo Vacio");
+    }
   };
 
   return (
@@ -70,46 +75,59 @@ const DetalleReceta = () => {
 
       {check && (
         <div className="CantidadTotal">
+          <h3 className="TituloModal">Modificar</h3>
           <div className="ContainerOpciones">
             <button
-              className="OpcionesAjuste"
+              className={`OpcionesAjuste ${!unitMode && "Seleccionada"}`}
               onClick={() => toggleUnitMode(false)}
             >
               Cantidad Total
             </button>
             <button
-              className="OpcionesAjuste"
+              className={`OpcionesAjuste ${unitMode && "Seleccionada"}`}
               onClick={() => toggleUnitMode(true)}
             >
               Unidades
             </button>
           </div>
           {!unitMode ? (
-            <input
-              type="number"
-              defaultValue={CantidadTotal && CantidadTotal[0]}
-              placeholder="Cantidad Total"
-              required
-              onChange={(e) => {
-                setcantidadMod(e.target.value);
-              }}
-            />
+            <>
+              <label className="LabelMod" htmlFor="CantidadTotal">
+                Cantidad Total:{" "}
+              </label>
+              <input
+                key={"CantidadTotal"}
+                id="CantidadTotal"
+                type="number"
+                defaultValue={CantidadTotal && CantidadTotal[0]}
+                required
+                onChange={(e) => {
+                  setcantidadMod(e.target.value);
+                }}
+              />
+            </>
           ) : (
             <>
+              <label className="LabelMod" htmlFor="Unidades">
+                Unidades:{" "}
+              </label>
               <input
-                className="InputModificarUnidades"
+                key={"unidades"}
+                id="Unidades"
                 type="number"
-                defaultValue={unidades && unidades}
-                placeholder="Unid"
+                defaultValue={unidades ? unidades : 1}
                 onChange={(e) => {
                   setUnidades(e.target.value);
                 }}
               />
+              <label className="LabelMod" htmlFor="CantidadU">
+                Cantidad c/u:{" "}
+              </label>
               <input
-                className="InputModificarUnidades"
+                key={"Cantidad"}
+                id="CantidadU"
                 type="number"
                 defaultValue={cantidadU && cantidadU}
-                placeholder="Cant (gr)"
                 onChange={(e) => {
                   setCantidadU(e.target.value);
                 }}
