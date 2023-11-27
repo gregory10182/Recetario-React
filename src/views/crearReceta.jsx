@@ -4,7 +4,7 @@ import FormGReceta from "../components/formGReceta";
 import FormImg from "../components/formImg";
 import FormPasos from "../components/formPasos";
 import Preview from "../components/preview";
-// import apiPost from "./api/apiPost";
+import BarraProgreso from "../components/BarraProgreso";
 import apiReceta from "../components/api/apiRecetas";
 
 const CrearReceta = () => {
@@ -12,6 +12,17 @@ const CrearReceta = () => {
   const [ingredientes, setingredientes] = useState([]);
   const [pasos, setpasos] = useState([]);
   const [img, setimg] = useState();
+  const [pasoActual, setPasoActual] = useState(0);
+
+  const datoPorPaso = [DatosReceta, img, ingredientes, pasos];
+
+  const comprobarPaso = () => {
+    if (!datoPorPaso?.[pasoActual] || datoPorPaso?.[pasoActual]?.length === 0) {
+      alert(`El paso ${pasoActual + 1} no ha sido completado`);
+    } else {
+      if (pasoActual < pasosForm.length - 1) setPasoActual(pasoActual + 1);
+    }
+  };
 
   const AgregarReceta = () => {
     let Receta = new FormData();
@@ -32,9 +43,88 @@ const CrearReceta = () => {
     });
   };
 
+  const pasosForm = [
+    <FormGReceta
+      DatosReceta={DatosReceta}
+      Agregar={(datos) => {
+        setDatosReceta(datos);
+      }}
+      fIR="Nombre de Receta"
+      sIR="Cantidad Total"
+    />,
+    <FormImg
+      savedImg={img}
+      Agregar={(imagen) => {
+        setimg(imagen);
+      }}
+    />,
+    <>
+      <FormGReceta
+        Agregar={(ingrediente) => {
+          setingredientes([...ingredientes, ingrediente]);
+        }}
+        fIR="Nombre de Ingrediente"
+        sIR="Cantidad"
+        type="ing"
+      />
+      {ingredientes.length > 0 && (
+        <Preview
+          Datos={ingredientes}
+          lista="Ingredientes"
+          Borrar={(borrador) => {
+            setingredientes(borrador);
+          }}
+        />
+      )}
+    </>,
+    <>
+      <FormPasos
+        Agregar={(paso) => {
+          setpasos([...pasos, paso]);
+        }}
+      />
+      {pasos.length > 0 && (
+        <Preview
+          Datos={pasos}
+          lista="Pasos"
+          Borrar={(borrador) => {
+            setpasos(borrador);
+          }}
+        />
+      )}
+    </>,
+    <div className="displays">
+      {(ingredientes.length > 0 || pasos.length > 0 || img) && (
+        <h1>Vista Previa {DatosReceta.Nombre && "de " + DatosReceta.Nombre}</h1>
+      )}
+
+      {img && <Preview Type="img" Datos={img} />}
+
+      {ingredientes.length > 0 && (
+        <Preview
+          Datos={ingredientes}
+          lista="Ingredientes"
+          Borrar={(borrador) => {
+            setingredientes(borrador);
+          }}
+        />
+      )}
+
+      {pasos.length > 0 && (
+        <Preview
+          Datos={pasos}
+          lista="Pasos"
+          Borrar={(borrador) => {
+            setpasos(borrador);
+          }}
+        />
+      )}
+    </div>,
+  ];
+
   return (
     <div className="Container">
-      <FormGReceta
+      {/* <FormGReceta
         Agregar={(datos) => {
           setDatosReceta(datos);
         }}
@@ -58,40 +148,59 @@ const CrearReceta = () => {
         Agregar={(paso) => {
           setpasos([...pasos, paso]);
         }}
-      />
+      /> */}
 
-      <div className="displays">
-        {(ingredientes.length > 0 || pasos.length > 0 || img) && (
-          <h1>
-            Vista Previa {DatosReceta.Nombre && "de " + DatosReceta.Nombre}
-          </h1>
-        )}
-
-        {img && <Preview Type="img" Datos={img} />}
-
-        {ingredientes.length > 0 && (
-          <Preview
-            Datos={ingredientes}
-            lista="Ingredientes"
-            Borrar={(borrador) => {
-              setingredientes(borrador);
-            }}
-          />
-        )}
-
-        {pasos.length > 0 && (
-          <Preview
-            Datos={pasos}
-            lista="Pasos"
-            Borrar={(borrador) => {
-              setpasos(borrador);
-            }}
-          />
-        )}
-      </div>
+      {pasosForm[pasoActual]}
 
       <NavButtons active="crear">
-        {DatosReceta && ingredientes.length > 0 && pasos.length > 0 && img && (
+        {pasoActual < pasosForm.length - 1 && (
+          <button className="Button" onClick={() => comprobarPaso()}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="icon icon-tabler icon-tabler-arrow-right"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              strokeWidth="2"
+              stroke="currentColor"
+              fill="none"
+              linecap="round"
+              linejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M5 12l14 0" />
+              <path d="M13 18l6 -6" />
+              <path d="M13 6l6 6" />
+            </svg>
+          </button>
+        )}
+
+        {pasoActual > 0 && (
+          <button
+            className="Button"
+            onClick={() => pasoActual > 0 && setPasoActual(pasoActual - 1)}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="icon icon-tabler icon-tabler-arrow-left"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              strokeWidth="2"
+              stroke="currentColor"
+              fill="none"
+              linecap="round"
+              linejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M5 12l14 0" />
+              <path d="M5 12l6 6" />
+              <path d="M5 12l6 -6" />
+            </svg>
+          </button>
+        )}
+
+        {pasoActual === pasosForm.length - 1 && (
           <button
             className="Button"
             onClick={() => {
@@ -105,6 +214,8 @@ const CrearReceta = () => {
           </button>
         )}
       </NavButtons>
+
+      <BarraProgreso numeroPasos={pasosForm.length} pasoActual={pasoActual} />
     </div>
   );
 };

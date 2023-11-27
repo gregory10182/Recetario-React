@@ -63,6 +63,7 @@ code {
 .Card {
   display: flex;
   justify-content: center;
+  align-content: space-between;
   background-color: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(1px);
   border: 1.5px solid rgba(209, 213, 219, 0.3);
@@ -202,7 +203,7 @@ code {
 }
 
 .display hr {
-  width: 80%;
+  width: 100%;
   color: #f6e500;
   background-color: white;
   height: 0.1px;
@@ -212,11 +213,10 @@ code {
 
 .display .Informacion {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   width: 100%;
   text-align: Center;
   word-wrap: break-word;
-  font-size: 18px;
 }
 
 .Informacion p {
@@ -225,7 +225,7 @@ code {
   margin-top: 5px;
   margin-bottom: 0px;
   text-align: Center;
-  font-size: 18px;
+  font-size: 0.85rem;
 }
 
 .Informacion button {
@@ -482,6 +482,33 @@ code {
 
 .Button:hover img {
   filter: invert(1);
+}
+
+.barraProgreso {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+  height: 0.8rem;
+}
+
+.barraProgreso div {
+  width: 100%;
+  border-right: 0.1rem solid #9f3e2d;
+  background-color: white;
+}
+
+.barraProgreso div:last-child {
+  border-right: none;
+}
+
+.barraProgreso .pasoActual {
+  background-color: #ffef0a;
+}
+
+.barraProgreso .pasoCompletado {
+  background-color: #23ff0a;
 }
 
 @media screen and (min-width: 768px) {

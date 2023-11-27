@@ -1,20 +1,32 @@
-import React from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const FormGReceta = ({ Agregar, fIR, sIR, type }) => {
+const FormGReceta = ({ DatosReceta, Agregar, fIR, sIR, type }) => {
   const [Nombre, setNombre] = useState("");
   const [Cantidad, setCantidad] = useState("");
   const [Unidad, setUnidad] = useState("");
+  const [invalid, setInvalid] = useState(false);
+
+  useEffect(() => {
+    console.log(DatosReceta);
+    if (DatosReceta) {
+      setNombre(DatosReceta?.Nombre);
+      setCantidad(DatosReceta?.CantidadTotal?.[0]);
+      setUnidad(DatosReceta?.CantidadTotal?.[1]);
+    }
+  }, [DatosReceta]);
 
   const AgregarDatosReceta = () => {
-    let DatosReceta = {
-      Nombre: Nombre,
-      CantidadTotal: [Cantidad, Unidad],
-    };
-
-    Agregar(DatosReceta);
-
-
+    if (Nombre && Cantidad && Unidad) {
+      let DatosReceta = {
+        Nombre: Nombre,
+        CantidadTotal: [Cantidad, Unidad],
+      };
+      Agregar(DatosReceta);
+      alert("Agregado Exitosamente");
+      setInvalid(false);
+    } else {
+      setInvalid(true);
+    }
   };
 
   const AgregarIngrediente = () => {
@@ -42,6 +54,9 @@ const FormGReceta = ({ Agregar, fIR, sIR, type }) => {
       <p>{fIR}</p>
       <div className="Input">
         <input
+          style={{
+            border: invalid && "0.2rem solid #5C0512",
+          }}
           onChange={(e) => setNombre(e.target.value)}
           value={Nombre}
           type="text"
@@ -50,6 +65,9 @@ const FormGReceta = ({ Agregar, fIR, sIR, type }) => {
       <p>{sIR}</p>
       <div className="Input">
         <input
+          style={{
+            border: invalid && "0.2rem solid #5C0512",
+          }}
           onChange={(e) => setCantidad(e.target.value)}
           value={Cantidad}
           className="Cantidad"
@@ -57,6 +75,9 @@ const FormGReceta = ({ Agregar, fIR, sIR, type }) => {
         />
         <span>-</span>
         <input
+          style={{
+            border: invalid && "0.2rem solid #5C0512",
+          }}
           onChange={(e) => setUnidad(e.target.value)}
           value={Unidad}
           className="Cantidad"
@@ -73,11 +94,9 @@ const FormGReceta = ({ Agregar, fIR, sIR, type }) => {
           } else {
             AgregarDatosReceta();
           }
-
           setNombre("");
           setCantidad("");
           setUnidad("");
-
         }}
       >
         Agregar

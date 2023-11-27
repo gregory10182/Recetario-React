@@ -1,11 +1,8 @@
-import React from "react";
 import { useState } from "react";
 
-const FormImg = ({ Agregar }) => {
+const FormImg = ({ savedImg, Agregar }) => {
   const [Img, setImg] = useState("");
   const [fileName, setFile] = useState("");
-
-
 
   return (
     <div className="Card">
@@ -22,8 +19,8 @@ const FormImg = ({ Agregar }) => {
           }}
         />
         <label htmlFor="file">Subir Imagen</label>
-        {fileName ? (
-          <p className="fileName">Imagen: {fileName}</p>
+        {savedImg || fileName ? (
+          <p className="fileName">Imagen: {savedImg?.name || fileName}</p>
         ) : (
           <p className="fileName">No hay imagen</p>
         )}
@@ -33,8 +30,8 @@ const FormImg = ({ Agregar }) => {
         onClick={() => {
           Agregar(Img);
 
-          setImg("")
-          setFile("")
+          setImg("");
+          setFile("");
         }}
       >
         Agregar
