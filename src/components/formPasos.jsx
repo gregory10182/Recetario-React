@@ -4,7 +4,15 @@ import { useState } from "react";
 const FormPasos = ({ Agregar }) => {
   const [paso, setPaso] = useState("");
 
-
+  const agregarPaso = () => {
+    if (paso) {
+      Agregar(paso);
+      setPaso("");
+      alert("Paso agregado exitosamente");
+    } else {
+      alert("No se pudo agregar el paso porque no ha escrito");
+    }
+  };
 
   return (
     <div className="Card">
@@ -25,9 +33,7 @@ const FormPasos = ({ Agregar }) => {
       <button
         className="Agregar"
         onClick={() => {
-          Agregar(paso);
-
-          setPaso("")
+          agregarPaso();
         }}
       >
         Agregar

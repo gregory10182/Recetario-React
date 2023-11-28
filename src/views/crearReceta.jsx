@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import NavButtons from "../components/navButtons";
 import FormGReceta from "../components/formGReceta";
 import FormImg from "../components/formImg";
@@ -8,6 +9,7 @@ import BarraProgreso from "../components/BarraProgreso";
 import apiReceta from "../components/api/apiRecetas";
 
 const CrearReceta = () => {
+  const navigate = useNavigate();
   const [DatosReceta, setDatosReceta] = useState([]);
   const [ingredientes, setingredientes] = useState([]);
   const [pasos, setpasos] = useState([]);
@@ -39,6 +41,7 @@ const CrearReceta = () => {
         setingredientes([]);
         setpasos([]);
         setimg("");
+        return navigate("/ver");
       }
     });
   };

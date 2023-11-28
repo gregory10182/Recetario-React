@@ -7,7 +7,6 @@ const FormGReceta = ({ DatosReceta, Agregar, fIR, sIR, type }) => {
   const [invalid, setInvalid] = useState(false);
 
   useEffect(() => {
-    console.log(DatosReceta);
     if (DatosReceta) {
       setNombre(DatosReceta?.Nombre);
       setCantidad(DatosReceta?.CantidadTotal?.[0]);
@@ -46,7 +45,16 @@ const FormGReceta = ({ DatosReceta, Agregar, fIR, sIR, type }) => {
       Ingrediente.Texto = Cantidad + " " + Unidad + " de " + Nombre;
     }
 
-    Agregar(Ingrediente);
+    if (
+      Ingrediente.Nombre &&
+      Ingrediente?.Cantidad.length === 2 &&
+      Ingrediente.Texto
+    ) {
+      Agregar(Ingrediente);
+      alert(`${Ingrediente.Nombre} agregado exitosamente`);
+    } else {
+      alert(`Falta algun campo`);
+    }
   };
 
   return (

@@ -1,8 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const FormImg = ({ savedImg, Agregar }) => {
   const [Img, setImg] = useState("");
-  const [fileName, setFile] = useState("");
+
+  useEffect(() => {
+    if (savedImg) {
+      setImg(savedImg);
+    }
+  }, [savedImg]);
+
+  const agregarImagen = () => {
+    if (Img) {
+      Agregar(Img);
+      alert("Imagen agregada exitosamente");
+      setImg("");
+    }
+  };
 
   return (
     <div className="Card">
@@ -15,25 +28,16 @@ const FormImg = ({ savedImg, Agregar }) => {
           accept="image/*"
           onChange={(e) => {
             setImg(e.target.files[0]);
-            setFile(e.target.files[0]?.name);
           }}
         />
         <label htmlFor="file">Subir Imagen</label>
-        {savedImg || fileName ? (
-          <p className="fileName">Imagen: {savedImg?.name || fileName}</p>
+        {savedImg || Img?.name ? (
+          <p className="fileName">Imagen: {Img?.name}</p>
         ) : (
           <p className="fileName">No hay imagen</p>
         )}
       </div>
-      <button
-        className="Agregar"
-        onClick={() => {
-          Agregar(Img);
-
-          setImg("");
-          setFile("");
-        }}
-      >
+      <button className="Agregar" onClick={() => agregarImagen()}>
         Agregar
       </button>
     </div>
