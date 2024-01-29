@@ -3,9 +3,10 @@ import React from "react";
 const Preview = ({ Type, Datos, Borrar, lista }) => {
   if (Type === "img") {
     let img = "";
-
-    if (Datos) {
+    if (!Datos?.secure_url) {
       img = URL.createObjectURL(Datos) || "";
+    } else {
+      img = Datos.secure_url;
     }
 
     return (

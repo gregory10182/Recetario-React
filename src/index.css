@@ -465,12 +465,9 @@ code {
   transition: all 0.5s ease;
 }
 
-.Button img {
-  height: 10px;
-}
-
-.Balanza img {
-  height: 14px;
+.Button img,
+svg {
+  height: 0.9rem;
 }
 
 .Button:hover {
@@ -557,8 +554,9 @@ code {
     height: 50px;
   }
 
-  .Button img {
-    height: 14px;
+  .Button img,
+  svg {
+    height: 1rem;
   }
 
   /* recetas */

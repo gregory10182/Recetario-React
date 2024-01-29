@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useLocation, useParams } from "react-router-dom";
 import NavButtons from "../components/navButtons";
 import FormGReceta from "../components/formGReceta";
 import FormImg from "../components/formImg";
@@ -10,13 +10,33 @@ import apiReceta from "../components/api/apiRecetas";
 
 const CrearReceta = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { id } = useParams();
   const [DatosReceta, setDatosReceta] = useState([]);
   const [ingredientes, setingredientes] = useState([]);
   const [pasos, setpasos] = useState([]);
   const [img, setimg] = useState();
   const [pasoActual, setPasoActual] = useState(0);
+  const [edit, setEdit] = useState(false);
 
   const datoPorPaso = [DatosReceta, img, ingredientes, pasos];
+
+  useEffect(() => {
+    if (location.pathname.includes("editarReceta")) {
+      setEdit(true);
+      apiReceta.getRecipeDetails(id).then((res) => {
+        const DatosReceta = {
+          Nombre: res.Nombre_receta,
+          CantidadTotal: [res.CantidadTotal[0], res.CantidadTotal[1]],
+        };
+        console.log(typeof res.img);
+        setDatosReceta(DatosReceta);
+        setimg(res.img);
+        setingredientes(res.ingredientes);
+        setpasos(res.pasos);
+      });
+    }
+  }, [id, location]);
 
   const comprobarPaso = () => {
     if (!datoPorPaso?.[pasoActual] || datoPorPaso?.[pasoActual]?.length === 0) {
@@ -36,6 +56,29 @@ const CrearReceta = () => {
 
     apiReceta.createRecipe(Receta).then((Response) => {
       if (Response.status === 201) {
+        alert("Receta Creada Exitosamente");
+        setDatosReceta([]);
+        setingredientes([]);
+        setpasos([]);
+        setimg("");
+        return navigate("/ver");
+      }
+    });
+  };
+
+  const EditarReceta = () => {
+    let Receta = new FormData();
+    Receta.append("Nombre_receta", DatosReceta.Nombre);
+    Receta.append("CantidadTotal", JSON.stringify(DatosReceta.CantidadTotal));
+    Receta.append("ingredientes", JSON.stringify(ingredientes));
+    Receta.append("pasos", JSON.stringify(pasos));
+    Receta.append("img", JSON.stringify(img));
+
+    for (const pair of Receta.entries()) {
+      console.log(pair[0], pair[1]);
+    }
+    apiReceta.updateRecipe(id, Receta).then((Response) => {
+      if (Response.status === 200) {
         alert("Receta Creada Exitosamente");
         setDatosReceta([]);
         setingredientes([]);
@@ -207,7 +250,7 @@ const CrearReceta = () => {
           <button
             className="Button"
             onClick={() => {
-              AgregarReceta();
+              !edit ? AgregarReceta() : EditarReceta();
             }}
           >
             <img
