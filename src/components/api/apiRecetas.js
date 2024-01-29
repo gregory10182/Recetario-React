@@ -1,6 +1,6 @@
 import axios from "axios";
-const baseUrl = "http://localhost:8000/receta/";
-// const baseUrl = "https://gregorypf.site/receta/";
+// const baseUrl = "http://localhost:8000/receta/";
+const baseUrl = "https://gregorypf.site/receta/";
 
 const getAll = () => {
   const request = axios.get(baseUrl);
