@@ -29,7 +29,6 @@ const CrearReceta = () => {
           Nombre: res.Nombre_receta,
           CantidadTotal: [res.CantidadTotal[0], res.CantidadTotal[1]],
         };
-        console.log(typeof res.img);
         setDatosReceta(DatosReceta);
         setimg(res.img);
         setingredientes(res.ingredientes);
@@ -73,10 +72,6 @@ const CrearReceta = () => {
     Receta.append("ingredientes", JSON.stringify(ingredientes));
     Receta.append("pasos", JSON.stringify(pasos));
     Receta.append("img", JSON.stringify(img));
-
-    for (const pair of Receta.entries()) {
-      console.log(pair[0], pair[1]);
-    }
     apiReceta.updateRecipe(id, Receta).then((Response) => {
       if (Response.status === 200) {
         alert("Receta Creada Exitosamente");

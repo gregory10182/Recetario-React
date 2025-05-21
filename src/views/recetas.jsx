@@ -10,7 +10,6 @@ const Recetas = () => {
   useEffect(() => {
     apiReceta.getAll().then((res) => {
       setrecetas(res);
-      console.log(res);
     });
   }, []);
 
