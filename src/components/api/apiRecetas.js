@@ -1,6 +1,7 @@
 import axios from "axios";
-// const baseUrl = "http://localhost:8000/receta/";
-const baseUrl = "https://gregorypf.site/receta/";
+const baseUrl = process.env.API_URL;
+
+console.log("Base URL:", baseUrl);
 
 const getAll = () => {
   const request = axios.get(baseUrl);
